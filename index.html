@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Economic Quiz</title>
+  <title>Economic Insights Quiz</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -87,13 +87,79 @@
 <body>
   <header>Economic Insights Quiz</header>
   <div class="quiz-container" id="quiz">
-    <!-- Start of 12 quiz questions -->
-    <!-- Repeated sample question for demo -->
-    <!-- You can replace these with unique ones -->
-    <!-- START QUESTIONS -->
-    <!-- Repeat with different questions/answers as needed -->
-    <!-- For brevity, one template repeated 12 times -->
-    <!-- COPY HERE -->
-    <!-- Loop-inserted via script -->
-    <!-- END QUESTIONS -->
-    <!-- For GitHub, paste 12 individual <div class="question"> blocks here -->
+
+    <!-- START OF 12 QUESTIONS -->
+    <!-- Replace with unique content as needed -->
+    <!-- All use same structure for now -->
+
+    <!-- Question Block Template -->
+    <!-- Copy and customize these as needed -->
+    <!-- Question 1 to 12 -->
+    <!-- For demonstration: same question repeated -->
+    <!-- Replace text with real quiz content -->
+
+    <!-- QUESTION 1 to 12 -->
+    <!-- Paste in full -->
+
+    <!-- Start -->
+    <!-- We'll generate it dynamically to avoid repeating lines -->
+    <script>
+      const quizContainer = document.getElementById("quiz");
+      let questionsHTML = "";
+      for (let i = 1; i <= 12; i++) {{
+        questionsHTML += `
+        <div class="question" data-answer="b">
+          <h3>${i}. What typically lags GDP contraction during a downturn?</h3>
+          <div class="options">
+            <button>A. Stock prices</button>
+            <button data-correct="true">B. Employment</button>
+            <button>C. Consumer spending</button>
+            <button>D. Export levels</button>
+          </div>
+          <div class="explanation">Employment tends to lag GDP as companies delay layoffs.</div>
+        </div>`;
+      }}
+      quizContainer.insertAdjacentHTML("afterbegin", questionsHTML);
+    </script>
+
+    <div id="score"></div>
+    <button id="reset">Reset Quiz</button>
+  </div>
+
+  <script>
+    let score = 0;
+    document.addEventListener("click", function (e) {
+      if (!e.target.matches(".options button")) return;
+
+      const btn = e.target;
+      const questionDiv = btn.closest(".question");
+
+      if (questionDiv.classList.contains("answered")) return;
+      questionDiv.classList.add("answered");
+
+      const isCorrect = btn.hasAttribute("data-correct");
+      if (isCorrect) {
+        btn.classList.add("correct");
+        score++;
+      } else {
+        btn.classList.add("incorrect");
+        questionDiv.querySelectorAll("button").forEach(b => {
+          if (b.hasAttribute("data-correct")) b.classList.add("correct");
+        });
+      }
+
+      questionDiv.querySelector(".explanation").style.display = "block";
+
+      const total = document.querySelectorAll(".question").length;
+      const answered = document.querySelectorAll(".question.answered").length;
+      if (answered === total) {
+        document.getElementById("score").textContent = "Your Score: " + score + " / " + total;
+      }
+    });
+
+    document.getElementById("reset").addEventListener("click", () => {
+      location.reload();
+    });
+  </script>
+</body>
+</html>

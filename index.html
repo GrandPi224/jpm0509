@@ -1,158 +1,193 @@
-# Create HTML with 12 hardcoded questions to ensure GitHub Pages compatibility
-hardcoded_questions = ""
-for i in range(1, 13):
-    hardcoded_questions += f"""
-    <div class="question" data-answer="b">
-      <h3>{i}. What typically lags GDP contraction during a downturn?</h3>
-      <div class="options">
-        <button>A. Stock prices</button>
-        <button data-correct="true">B. Employment</button>
-        <button>C. Consumer spending</button>
-        <button>D. Export levels</button>
-      </div>
-      <div class="explanation">Employment tends to lag GDP as companies delay layoffs.</div>
-    </div>
-    """
+from pathlib import Path
 
-html_hardcoded = f"""
+# Define the full HTML content using the user's specified styles and requirements
+html_content = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Economic Insights Quiz</title>
+  <title>Economic Recession Quiz - May 2025</title>
   <style>
-    body {{
+    body {
       font-family: Arial, sans-serif;
       background-color: #eef2f7;
       margin: 0;
       padding: 0;
-    }}
-    header {{
+    }
+    header {
       background: linear-gradient(to right, #1e3a8a, #2563eb);
       color: white;
       padding: 20px;
       text-align: center;
-      font-size: 1.5rem;
-    }}
-    .quiz-container {{
-      background: white;
+    }
+    .quiz-container {
       max-width: 800px;
-      margin: 30px auto;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }}
-    .question {{
+      margin: 20px auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+    .question {
       margin-bottom: 20px;
-    }}
-    .question h3 {{
+    }
+    .question h3 {
       margin-bottom: 10px;
-    }}
-    .options button {{
+    }
+    .options button {
       display: block;
       width: 100%;
-      margin: 6px 0;
-      padding: 10px;
+      text-align: left;
       background-color: #f3f4f6;
       border: 2px solid transparent;
-      border-radius: 5px;
+      border-radius: 6px;
+      padding: 10px;
+      margin: 6px 0;
       cursor: pointer;
-      text-align: left;
-    }}
-    .options button:hover {{
+    }
+    .options button:hover {
       background-color: #e5e7eb;
-    }}
-    .correct {{
-      background-color: #d1fae5 !important;
+    }
+    .options button.correct {
+      background-color: #d1fae5;
       color: #065f46;
       border-color: #10b981;
-    }}
-    .incorrect {{
-      background-color: #fee2e2 !important;
+    }
+    .options button.incorrect {
+      background-color: #fee2e2;
       color: #991b1b;
       border-color: #ef4444;
-    }}
-    .explanation {{
+    }
+    .explanation {
       background-color: #e0f2fe;
-      border-left: 4px solid #38bdf8;
+      border-left: 5px solid #38bdf8;
       padding: 10px;
-      margin-top: 5px;
+      margin-top: 10px;
       display: none;
-    }}
-    #score {{
-      text-align: center;
+    }
+    .score {
       font-weight: bold;
+      text-align: center;
+      font-size: 1.2em;
       color: #1e40af;
       margin-top: 20px;
-    }}
-    #reset {{
-      display: block;
-      margin: 20px auto 0;
-      padding: 10px 20px;
+    }
+    .reset-btn {
       background-color: #3b82f6;
       color: white;
+      padding: 10px 20px;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
-    }}
-    #reset:hover {{
+      margin-top: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .reset-btn:hover {
       background-color: #2563eb;
-    }}
+    }
+    .label-A { color: #3b82f6; font-weight: bold; }
+    .label-B { color: #6366f1; font-weight: bold; }
+    .label-C { color: #10b981; font-weight: bold; }
+    .label-D { color: #f43f5e; font-weight: bold; }
   </style>
 </head>
 <body>
-  <header>Economic Insights Quiz</header>
-  <div class="quiz-container" id="quiz">
-    {hardcoded_questions}
-    <div id="score"></div>
-    <button id="reset">Reset Quiz</button>
-  </div>
-
-  <script>
-    const quiz = document.querySelectorAll(".question");
-    let score = 0;
-
-    quiz.forEach((q) => {{
-      const buttons = q.querySelectorAll("button");
-      const explanation = q.querySelector(".explanation");
-      buttons.forEach(btn => {{
-        btn.addEventListener("click", () => {{
-          if (q.classList.contains("answered")) return;
-
-          q.classList.add("answered");
-          const correct = btn.hasAttribute("data-correct");
-
-          if (correct) {{
-            btn.classList.add("correct");
-            score++;
-          }} else {{
-            btn.classList.add("incorrect");
-            buttons.forEach(b => {{
-              if (b.hasAttribute("data-correct")) b.classList.add("correct");
-            }});
-          }}
-
-          explanation.style.display = "block";
-
-          const unanswered = document.querySelectorAll(".question:not(.answered)").length;
-          if (unanswered === 0) {{
-            document.getElementById("score").textContent = "Your Score: " + score + " / " + quiz.length;
-          }}
-        }});
-      }});
-    }});
-
-    document.getElementById("reset").addEventListener("click", () => {{
-      location.reload();
-    }});
-  </script>
+<header>
+  <h1>Economic Recession Quiz - May 2025</h1>
+</header>
+<div class="quiz-container" id="quiz"></div>
+<div class="score" id="score"></div>
+<button class="reset-btn" onclick="location.reload()">Reset Quiz</button>
+<script>
+const questions = [
+  {
+    q: "What is Yardeni Research's current assessment of the probability of a recession in the US economy?",
+    options: [
+      "<span class='label-A'>A.</span> 20%",
+      "<span class='label-B'>B.</span> 35%",
+      "<span class='label-C'>C.</span> 45%",
+      "<span class='label-D'>D.</span> 60%"
+    ],
+    correct: 1,
+    explanation: "Yardeni Research has lowered their subjective probability of a recession back to 35% due to signs of economic resilience."
+  },
+  {
+    q: "What term does Yardeni Research use to describe the widely anticipated recession that hasn't materialized?",
+    options: [
+      "<span class='label-A'>A.</span> The Ghost Recession",
+      "<span class='label-B'>B.</span> The Phantom Recession",
+      "<span class='label-C'>C.</span> The Godot Recession",
+      "<span class='label-D'>D.</span> The Mirage Recession"
+    ],
+    correct: 2,
+    explanation: "Yardeni Research refers to it as the 'Godot recession', referencing Beckett’s play where the awaited person never arrives."
+  },
+  {
+    q: "According to the briefing, what is the main potential cause of a recession in 2025?",
+    options: [
+      "<span class='label-A'>A.</span> Federal Reserve interest rate hikes",
+      "<span class='label-B'>B.</span> Trump's Tariff Turmoil",
+      "<span class='label-C'>C.</span> Housing market collapse",
+      "<span class='label-D'>D.</span> Banking sector instability"
+    ],
+    correct: 1,
+    explanation: "The briefing identifies 'Trump's Tariff Turmoil' as the primary potential cause of a 2025 downturn."
+  }
+  // The remaining questions will be appended in the next chunk due to length
+];
+let current = 0;
+let score = 0;
+function showQuestion() {
+  const quiz = document.getElementById("quiz");
+  if (current >= questions.length) {
+    document.getElementById("score").innerText = `Your score: ${score}/${questions.length}`;
+    return;
+  }
+  const q = questions[current];
+  const div = document.createElement("div");
+  div.className = "question";
+  const h3 = document.createElement("h3");
+  h3.innerText = `Q${current + 1}. ${q.q}`;
+  div.appendChild(h3);
+  const optDiv = document.createElement("div");
+  optDiv.className = "options";
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement("button");
+    btn.innerHTML = opt;
+    btn.onclick = () => {
+      if (i === q.correct) {
+        btn.classList.add("correct");
+        score++;
+      } else {
+        btn.classList.add("incorrect");
+      }
+      Array.from(optDiv.children).forEach(b => b.disabled = true);
+      const exp = document.createElement("div");
+      exp.className = "explanation";
+      exp.innerText = q.explanation;
+      exp.style.display = "block";
+      div.appendChild(exp);
+      current++;
+      setTimeout(() => {
+        quiz.innerHTML = "";
+        showQuestion();
+      }, 1500);
+    };
+    optDiv.appendChild(btn);
+  });
+  div.appendChild(optDiv);
+  quiz.appendChild(div);
+}
+showQuestion();
+</script>
 </body>
 </html>
 """
 
-# Save final GitHub-compatible version with hardcoded questions
-final_html_path = Path("/mnt/data/index_hardcoded.html")
-final_html_path.write_text(html_hardcoded.strip())
-
-final_html_path.name
+# Write HTML file to /mnt/data for user download
+path = Path("/mnt/data/index.html")
+path.write_text(html_content)
+path.name

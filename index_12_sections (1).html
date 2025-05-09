@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Economic Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef2f7;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: linear-gradient(to right, #1e3a8a, #2563eb);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+    .quiz-container {
+      background: white;
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .question h3 {
+      margin-bottom: 10px;
+    }
+    .options button {
+      display: block;
+      width: 100%;
+      margin: 6px 0;
+      padding: 10px;
+      background-color: #f3f4f6;
+      border: 2px solid transparent;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: left;
+    }
+    .options button:hover {
+      background-color: #e5e7eb;
+    }
+    .correct {
+      background-color: #d1fae5 !important;
+      color: #065f46;
+      border-color: #10b981;
+    }
+    .incorrect {
+      background-color: #fee2e2 !important;
+      color: #991b1b;
+      border-color: #ef4444;
+    }
+    .explanation {
+      background-color: #e0f2fe;
+      border-left: 4px solid #38bdf8;
+      padding: 10px;
+      margin-top: 5px;
+      display: none;
+    }
+    #score {
+      text-align: center;
+      font-weight: bold;
+      color: #1e40af;
+      margin-top: 20px;
+    }
+    #reset {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 20px;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #reset:hover {
+      background-color: #2563eb;
+    }
+  </style>
+</head>
+<body>
+  <header>Economic Insights Quiz</header>
+  <div class="quiz-container" id="quiz">
+    
+    <div class="question" data-answer="b">
+      <h3>1. What typically lags GDP contraction during a downturn?</h3>
+      <div class="options">
+        <button>A. Stock prices</button>
+        <button data-correct="true">B. Employment</button>
+        <button>C. Consumer spending</button>
+        <button>D. Export levels</button>
+      </div>
+      <div class="explanation">Employment tends to lag GDP as companies delay layoffs.</div>
+    </div>
+    
+
+    <div class="question" data-answer="b">
+      <h3>2. What typically lags GDP contraction during a downturn?</h3>
+      <div class="options">
+        <button>A. Stock prices</button>
+        <button data-correct="true">B. Employment</button>
+        <button>C. Consumer spending</button>
+        <button>D. Export levels</button>
+      </div>
+      <div class="explanation">Employment tends to lag GDP as companies delay layoffs.</div>
+    </div>
+    
+
+    <div class="question" data-answer="b">
+      <h3>3. What typically lags GDP contraction during a downturn?</h3>
+      <div class="options">
+        <button>A. Stock prices</button>
+        <button data-correct="true">B. Employment</button>
+        <button>C. Consumer spending</button>
+        <button>D. Export levels</button>
+      </div>
+      <div class="explanation">Employment tends to lag GDP as companies delay layoffs.</div>
+    </div>
+    
+
+    <div class="question" data-answer="b">
+      <h3>4. What typically lags GDP contraction during a downturn?</h3>
+      <div class="options">
+        <button>A. Stock prices</button>
+        <button data-correct="true">B. Employment</button>
+        <button>C. Consumer spending</button>
+        <button>D. Export levels</button>
+      </div>
+      <div class="explanation">Employment tends to lag GDP as companies delay layoffs.</div>
+    </div>
+    
+
+    <div class="question" data-answer="b">
+      <h3>5. What typically lags GDP contraction during a downturn?</h3>
+      <div class="options">
+        <button>A. Stock prices</button>
+        <button data-correct="true">B. Employment</button>
+        <button>C. Consumer spending</button>
+        <button>D. Export levels</button>
+      </div>
+      <div class="explanation">Employment tends to lag GDP as companies delay layoffs.</div>
+    </div>
+    
+
+    <div class="question" data-answer="b">
+      <h3>6. What typically lags GDP contraction during a downturn?</h3>
+      <div class="options">
+        <button>A. Stock prices</button>
+        <button data-correct="true">B. Employment</button>
+        <button>C. Consumer spending</button>
+        <button>D. Export levels</button>
+      </div>
+      <div class="explanation">Employment tends to lag GDP as companies delay layoffs.</div>
+    </div>
+    
+
+    <div class="question" data-answer="b">
+      <h3>7. What typically lags GDP contraction during a downturn?</h3>
+      <div class="options">
+        <button>A. Stock prices</button>
+        <button data-correct="true">B. Employment</button>
+        <button>C. Consumer spending</button>
+        <button>D. Export levels</button>
+      </div>
+      <div class="explanation">Employment tends to lag GDP as companies delay layoffs.</div>
+    </div>
+    
+
+    <div class="question" data-answer="b">
+      <h3>8. What typically lags GDP contraction during a downturn?</h3>
+      <div class="options">
+        <button>A. Stock prices</button>
+        <button data-correct="true">B. Employment</button>
+        <button>C. Consumer spending</button>
+        <button>D. Export levels</button>
+      </div>
+      <div class="explanation">Employment tends to lag GDP as companies delay layoffs.</div>
+    </div>
+    
+
+    <div class="question" data-answer="b">
+      <h3>9. What typically lags GDP contraction during a downturn?</h3>
+      <div class="options">
+        <button>A. Stock prices</button>
+        <button data-correct="true">B. Employment</button>
+        <button>C. Consumer spending</button>
+        <button>D. Export levels</button>
+      </div>
+      <div class="explanation">Employment tends to lag GDP as companies delay layoffs.</div>
+    </div>
+    
+
+    <div class="question" data-answer="b">
+      <h3>10. What typically lags GDP contraction during a downturn?</h3>
+      <div class="options">
+        <button>A. Stock prices</button>
+        <button data-correct="true">B. Employment</button>
+        <button>C. Consumer spending</button>
+        <button>D. Export levels</button>
+      </div>
+      <div class="explanation">Employment tends to lag GDP as companies delay layoffs.</div>
+    </div>
+    
+
+    <div class="question" data-answer="b">
+      <h3>11. What typically lags GDP contraction during a downturn?</h3>
+      <div class="options">
+        <button>A. Stock prices</button>
+        <button data-correct="true">B. Employment</button>
+        <button>C. Consumer spending</button>
+        <button>D. Export levels</button>
+      </div>
+      <div class="explanation">Employment tends to lag GDP as companies delay layoffs.</div>
+    </div>
+    
+
+    <div class="question" data-answer="b">
+      <h3>12. What typically lags GDP contraction during a downturn?</h3>
+      <div class="options">
+        <button>A. Stock prices</button>
+        <button data-correct="true">B. Employment</button>
+        <button>C. Consumer spending</button>
+        <button>D. Export levels</button>
+      </div>
+      <div class="explanation">Employment tends to lag GDP as companies delay layoffs.</div>
+    </div>
+    
+    <div id="score"></div>
+    <button id="reset">Reset Quiz</button>
+  </div>
+
+  <script>
+    const quiz = document.querySelectorAll(".question");
+    let score = 0;
+
+    quiz.forEach((q) => {
+      const buttons = q.querySelectorAll("button");
+      const explanation = q.querySelector(".explanation");
+      buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          if (q.classList.contains("answered")) return;
+
+          q.classList.add("answered");
+          const correct = btn.hasAttribute("data-correct");
+
+          if (correct) {
+            btn.classList.add("correct");
+            score++;
+          } else {
+            btn.classList.add("incorrect");
+            buttons.forEach(b => {
+              if (b.hasAttribute("data-correct")) b.classList.add("correct");
+            });
+          }
+
+          explanation.style.display = "block";
+
+          const unanswered = document.querySelectorAll(".question:not(.answered)").length;
+          if (unanswered === 0) {
+            document.getElementById("score").textContent = "Your Score: " + score + " / " + quiz.length;
+          }
+        });
+      });
+    });
+
+    document.getElementById("reset").addEventListener("click", () => {
+      location.reload();
+    });
+  </script>
+</body>
+</html>

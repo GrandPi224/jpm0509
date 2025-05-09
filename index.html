@@ -1,7 +1,6 @@
-from pathlib import Path
+# Rewriting the full HTML with all 12 questions as requested
 
-# Define the full HTML content using the user's specified styles and requirements
-html_content = """
+full_html = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -112,7 +111,7 @@ const questions = [
       "<span class='label-D'>D.</span> 60%"
     ],
     correct: 1,
-    explanation: "Yardeni Research has lowered their subjective probability of a recession back to 35% due to signs of economic resilience."
+    explanation: "Yardeni Research lowered the recession probability back to 35% due to economic resilience and possible trade negotiations."
   },
   {
     q: "What term does Yardeni Research use to describe the widely anticipated recession that hasn't materialized?",
@@ -123,7 +122,7 @@ const questions = [
       "<span class='label-D'>D.</span> The Mirage Recession"
     ],
     correct: 2,
-    explanation: "Yardeni Research refers to it as the 'Godot recession', referencing Beckett’s play where the awaited person never arrives."
+    explanation: "The 'Godot Recession' references 'Waiting for Godot' — a metaphor for a recession that never arrives."
   },
   {
     q: "According to the briefing, what is the main potential cause of a recession in 2025?",
@@ -134,10 +133,109 @@ const questions = [
       "<span class='label-D'>D.</span> Banking sector instability"
     ],
     correct: 1,
-    explanation: "The briefing identifies 'Trump's Tariff Turmoil' as the primary potential cause of a 2025 downturn."
+    explanation: "'Trump's Tariff Turmoil' is cited as the most likely recession trigger in 2025."
+  },
+  {
+    q: "When did President Trump postpone the reciprocal tariffs he had announced on 'Liberation Day'?",
+    options: [
+      "<span class='label-A'>A.</span> March 5, 2025",
+      "<span class='label-B'>B.</span> April 2, 2025",
+      "<span class='label-C'>C.</span> April 9, 2025",
+      "<span class='label-D'>D.</span> May 1, 2025"
+    ],
+    correct: 2,
+    explanation: "Trump postponed reciprocal tariffs on April 9, 2025."
+  },
+  {
+    q: "What was the S&P 500's performance since its April 8 bottom through the date of the report?",
+    options: [
+      "<span class='label-A'>A.</span> 5.6% increase",
+      "<span class='label-B'>B.</span> 9.3% increase",
+      "<span class='label-C'>C.</span> 14.1% increase",
+      "<span class='label-D'>D.</span> 20.7% increase"
+    ],
+    correct: 2,
+    explanation: "The S&P 500 gained 14.1% since its April 8 bottom."
+  },
+  {
+    q: "What is Yardeni Research's current S&P 500 target for the end of 2025?",
+    options: [
+      "<span class='label-A'>A.</span> 5000",
+      "<span class='label-B'>B.</span> 6000",
+      "<span class='label-C'>C.</span> 6400",
+      "<span class='label-D'>D.</span> 7000"
+    ],
+    correct: 1,
+    explanation: "Yardeni's S&P 500 target is currently 6000."
+  },
+  {
+    q: "Which economic indicator has been rising to new record highs, contradicting the recession predictions?",
+    options: [
+      "<span class='label-A'>A.</span> Index of Leading Economic Indicators (LEI)",
+      "<span class='label-B'>B.</span> Index of Coincident Economic Indicators (CEI)",
+      "<span class='label-C'>C.</span> Consumer Confidence Index",
+      "<span class='label-D'>D.</span> Purchasing Managers' Index (PMI)"
+    ],
+    correct: 1,
+    explanation: "The CEI has hit record highs while the LEI forecasts recession."
+  },
+  {
+    q: "What was the nonfarm payroll employment increase for April 2025?",
+    options: [
+      "<span class='label-A'>A.</span> 102,000",
+      "<span class='label-B'>B.</span> 138,000",
+      "<span class='label-C'>C.</span> 177,000",
+      "<span class='label-D'>D.</span> 228,000"
+    ],
+    correct: 2,
+    explanation: "Payrolls increased by 177,000 in April, above expectations."
+  },
+  {
+    q: "Which sector added the most jobs in April 2025 according to the report?",
+    options: [
+      "<span class='label-A'>A.</span> Manufacturing",
+      "<span class='label-B'>B.</span> Health care and social assistance",
+      "<span class='label-C'>C.</span> Transportation and warehousing",
+      "<span class='label-D'>D.</span> Leisure and hospitality"
+    ],
+    correct: 1,
+    explanation: "Health care and social assistance added the most jobs — 58,200 total."
+  },
+  {
+    q: "What happened to federal government employment in April 2025?",
+    options: [
+      "<span class='label-A'>A.</span> It increased by 9,000",
+      "<span class='label-B'>B.</span> It decreased by 9,000",
+      "<span class='label-C'>C.</span> It remained unchanged",
+      "<span class='label-D'>D.</span> It increased by 4,000"
+    ],
+    correct: 1,
+    explanation: "Federal employment declined by 9,000 in April 2025."
+  },
+  {
+    q: "What factor is Yardeni Research 'betting on' to maintain economic resilience?",
+    options: [
+      "<span class='label-A'>A.</span> Federal Reserve policy",
+      "<span class='label-B'>B.</span> Consumer spending, especially from retiring Baby Boomers",
+      "<span class='label-C'>C.</span> Manufacturing sector strength",
+      "<span class='label-D'>D.</span> Government infrastructure spending"
+    ],
+    correct: 1,
+    explanation: "Yardeni is betting on spending by retiring Baby Boomers."
+  },
+  {
+    q: "According to the April JP Morgan Global Manufacturing PMI report, what was the headline finding?",
+    options: [
+      "<span class='label-A'>A.</span> Global PMI shows strong expansion",
+      "<span class='label-B'>B.</span> Global PMI falls into contraction territory as new orders decline",
+      "<span class='label-C'>C.</span> Global PMI stable",
+      "<span class='label-D'>D.</span> Global PMI reaches multi-year high"
+    ],
+    correct: 1,
+    explanation: "The April PMI report headline: 'Global PMI falls into contraction territory as new orders decline.'"
   }
-  // The remaining questions will be appended in the next chunk due to length
 ];
+
 let current = 0;
 let score = 0;
 function showQuestion() {
@@ -187,7 +285,7 @@ showQuestion();
 </html>
 """
 
-# Write HTML file to /mnt/data for user download
-path = Path("/mnt/data/index.html")
-path.write_text(html_content)
-path.name
+# Save full code
+path_full = Path("/mnt/data/economic_recession_quiz_may2025.html")
+path_full.write_text(full_html)
+path_full.name
